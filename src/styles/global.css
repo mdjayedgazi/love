@@ -1,0 +1,298 @@
+/* ============================================================
+   GLOBAL STYLES  —  design tokens, layout, typography, buttons
+   ============================================================ */
+
+/* Web fonts are loaded in index.html for faster first paint. */
+
+:root {
+  /* --- Palette: soft blush, warm ivory, rose, champagne, gold --- */
+  --ivory: #fffaf7;
+  --cream: #fdf3ee;
+  --blush: #f9e2e8;
+  --blush-deep: #f3cdd8;
+  --rose: #e191a9;
+  --rose-mid: #d1748f;
+  --rose-deep: #b04a6c;
+  --champagne: #f6e7cf;
+  --gold: #c9a352;
+  --gold-soft: #e4cb8f;
+
+  --ink: #3b2a30;
+  --ink-soft: #6d5a62;
+  --ink-faint: #9a8890;
+
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #fffdfc;
+  --border: rgba(176, 74, 108, 0.16);
+  --border-soft: rgba(176, 74, 108, 0.1);
+
+  --shadow-sm: 0 4px 14px rgba(120, 60, 85, 0.08);
+  --shadow-md: 0 14px 40px rgba(120, 60, 85, 0.12);
+  --shadow-lg: 0 28px 70px rgba(120, 60, 85, 0.16);
+  --glow-gold: 0 0 26px rgba(224, 180, 90, 0.55);
+  --glow-rose: 0 0 30px rgba(225, 145, 169, 0.5);
+
+  /* --- Typography --- */
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Dancing Script', cursive;
+
+  /* --- Layout --- */
+  --max-width: 1140px;
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 30px;
+
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(1100px 620px at 12% -8%, rgba(243, 205, 216, 0.75), transparent 62%),
+    radial-gradient(950px 620px at 96% 4%, rgba(246, 231, 207, 0.7), transparent 60%),
+    radial-gradient(900px 700px at 50% 118%, rgba(225, 145, 169, 0.28), transparent 65%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--rose-deep);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------- Layout helpers ---------- */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 76px 0;
+  position: relative;
+}
+
+.section--tight {
+  padding: 52px 0;
+}
+
+.section-head {
+  max-width: 680px;
+  margin: 0 auto 46px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 14px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+  margin-bottom: 16px;
+}
+
+.section-head p {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.lead {
+  font-family: var(--font-accent);
+  font-size: 1.22rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* Decorative gold divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 26px auto;
+  color: var(--gold);
+  max-width: 240px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    color 0.25s ease, border-color 0.25s ease;
+  background: none;
+  color: inherit;
+  line-height: 1.2;
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.btn--primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+  box-shadow: 0 12px 28px rgba(176, 74, 108, 0.32);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(176, 74, 108, 0.4);
+}
+
+.btn--ghost {
+  color: var(--rose-deep);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--rose);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--gold {
+  color: #5c451a;
+  background: linear-gradient(135deg, #f3ddab 0%, var(--gold) 100%);
+  box-shadow: 0 10px 24px rgba(201, 163, 82, 0.34);
+}
+
+.btn--gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(201, 163, 82, 0.44);
+}
+
+.btn--small {
+  padding: 9px 18px;
+  font-size: 0.85rem;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rose-deep);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Shared surfaces ---------- */
+.card {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 26px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

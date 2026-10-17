@@ -1,0 +1,227 @@
+/* ============================================================
+   ANIMATIONS  —  keyframes, reveal helpers, reduced motion
+   ============================================================ */
+
+/* ---------- Keyframes ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes flicker {
+  0%   { transform: translateX(-50%) scale(1) rotate(-1deg); opacity: 0.94; }
+  20%  { transform: translateX(-50%) scale(1.08, 0.96) rotate(2deg); opacity: 1; }
+  40%  { transform: translateX(-50%) scale(0.94, 1.06) rotate(-2deg); opacity: 0.9; }
+  60%  { transform: translateX(-50%) scale(1.05, 0.98) rotate(1deg); opacity: 1; }
+  80%  { transform: translateX(-50%) scale(0.97, 1.04) rotate(-1deg); opacity: 0.95; }
+  100% { transform: translateX(-50%) scale(1) rotate(-1deg); opacity: 0.94; }
+}
+
+@keyframes flameGlow {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.9; transform: translateX(-50%) scale(1.18); }
+}
+
+@keyframes heartRise {
+  0%   { transform: translateY(0) scale(0.9) rotate(0deg); opacity: 0; }
+  12%  { opacity: 0.85; }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(-115vh) scale(1.1) rotate(22deg); opacity: 0; }
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(90deg); }
+}
+
+@keyframes confettiFall {
+  0%   { transform: translate3d(0, -12vh, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate3d(var(--drift, 0px), 108vh, 0) rotate(720deg); opacity: 0; }
+}
+
+@keyframes burst {
+  0%   { transform: translate(-50%, -50%) translate(0, 0) scale(0.4); opacity: 1; }
+  100% { transform: translate(-50%, -50%) translate(var(--bx, 0), var(--by, 0)) scale(0.9); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -160% 0; }
+  100% { background-position: 260% 0; }
+}
+
+@keyframes cakeIn {
+  0%   { opacity: 0; transform: translateY(40px) scale(0.9); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes gentleBob {
+  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+  50% { transform: translateY(-8px) rotate(0.4deg); }
+}
+
+@keyframes candlePopIn {
+  0% { opacity: 0; transform: translateY(14px) scale(0.6); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes letterOpen {
+  0% { opacity: 0; transform: translateY(-30px) rotateX(-35deg) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(201, 163, 82, 0); }
+  50% { box-shadow: 0 0 34px rgba(201, 163, 82, 0.5); }
+}
+
+/* A candle flame and its glow fading out after being blown (see
+   .candle.is-out in components.css). */
+@keyframes flameOut {
+  0% { opacity: 0.95; transform: translateX(-50%) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.25); }
+}
+
+@keyframes glowOut {
+  0% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) scale(0.4); }
+}
+
+/* ---------- Large heart (Our Journey hero) ---------- */
+@keyframes heartGrow {
+  0% { opacity: 0; transform: scale(0.22); }
+  55% { opacity: 1; }
+  72% { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.055); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.04); }
+  56% { transform: scale(1); }
+}
+
+@keyframes heartBeatStrong {
+  0%, 100% { transform: scale(1.08); }
+  12% { transform: scale(1.19); }
+  26% { transform: scale(1.08); }
+  40% { transform: scale(1.155); }
+  54% { transform: scale(1.08); }
+}
+
+@keyframes heartGlow {
+  0%, 100% { opacity: 0.55; transform: scale(0.94); }
+  50% { opacity: 0.92; transform: scale(1.04); }
+}
+
+@keyframes heartBurst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(0) scale(0.3);
+  }
+  22% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg))
+      translateY(calc(var(--distance, 100px) * -1)) scale(1);
+  }
+}
+
+/* A few restrained hearts drifting around the large heart at rest. */
+@keyframes heartFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) translateY(-12px) scale(1.14); opacity: 0.58; }
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Page transition wrapper ---------- */
+.page-enter {
+  animation: pageEnter 0.6s ease both;
+}
+
+/* ---------- Utility animation classes ---------- */
+.anim-float { animation: floatY 6s ease-in-out infinite; }
+.anim-bob { animation: gentleBob 7s ease-in-out infinite; }
+.anim-glow { animation: glowPulse 3.2s ease-in-out infinite; }
+
+/* ---------- Decorative floating layer ---------- */
+.floating-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  color: var(--rose);
+  opacity: 0;
+  animation: heartRise linear infinite;
+}
+
+.floating-sparkle {
+  position: absolute;
+  color: var(--gold-soft);
+  animation: sparkleTwinkle ease-in-out infinite;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .floating-layer {
+    display: none;
+  }
+}
