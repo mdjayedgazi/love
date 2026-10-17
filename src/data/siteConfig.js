@@ -16,7 +16,10 @@
  *    birthday       : her birthday as a day + month. Only the day
  *                     and month are known, so do NOT add a year.
  *                       month: 1 = January ... 12 = December
- *    boyfriendName  : the sender. Signs the letter and the footer.
+ *    boyfriendName  : the sender. Signs the birthday letter.
+ *    creatorName    : the person who built the website. Used only for
+ *                     the footer credit — it is kept separate from the
+ *                     boyfriend's name.
  *    footerNote     : the small line at the bottom of every page.
  */
 
@@ -31,6 +34,10 @@ export const siteConfig = {
   },
 
   boyfriendName: 'Ariyan',
+
+  // The website creator. This is a separate person from the boyfriend
+  // above, so changing it never affects the letter's signature.
+  creatorName: 'Jayed',
 
   // Small site-wide settings.
   footerNote: 'Made with love, just for you.',

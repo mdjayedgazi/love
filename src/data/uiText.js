@@ -26,7 +26,10 @@ export const uiText = {
 
   // ---------- Footer ----------
   footer: {
-    madeBy: 'made by',
+    // The website creator credit. "{name}" is filled in automatically
+    // from siteConfig.creatorName, so the creator's name is never typed
+    // twice. It is separate from the boyfriend's name used in the letter.
+    credit: 'Made with ♥ by {name}',
   },
 
   // ---------- Shared buttons and links ----------

@@ -40,6 +40,10 @@
 
   /* --- Layout --- */
   --max-width: 1140px;
+  /* Height of the fixed navigation bar. The navbar itself and every
+     section that sits underneath it read this value, so the bar never
+     covers a page heading. It is reduced on small screens below. */
+  --nav-h: 72px;
   --radius-sm: 12px;
   --radius: 20px;
   --radius-lg: 30px;
@@ -57,6 +61,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
 }
 
 body {

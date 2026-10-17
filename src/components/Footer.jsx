@@ -1,11 +1,18 @@
 import { Heart } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
 import { uiText } from '../data/uiText';
+import { interpolate } from '../utils/text';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
   const year = CURRENT_YEAR;
+
+  // The creator credit lives in uiText.footer.credit and is filled in from
+  // siteConfig.creatorName, so it stays a single source of truth.
+  const credit = interpolate(uiText.footer.credit, {
+    name: siteConfig.creatorName,
+  });
 
   return (
     <footer className="footer">
@@ -17,8 +24,8 @@ export default function Footer() {
           {siteConfig.footerNote} &nbsp;·&nbsp; for{' '}
           <strong>{siteConfig.girlName}</strong>
         </p>
-        <p style={{ marginTop: 6, fontSize: '0.78rem' }}>
-          © {year} — {uiText.footer.madeBy} {siteConfig.boyfriendName}
+        <p className="footer__credit">
+          © {year} — {credit}
         </p>
       </div>
     </footer>
